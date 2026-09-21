@@ -1,0 +1,71 @@
+Class yang Digunakan
+
+Program ini punya 3 class:
+1. BouquetBunga:
+atributnya ada:
+- id_bouquet  identitas unik untuk setiap bouquet (public)
+- nama_bouquet  nama dari produk bouquet (public)
+- harga  harga jual per bouquet (public)
+- stok  ketersediaan stok bouquet (public)
+- total_bouquet  ini merupakan atribut kelas yang dimiliki bersama oleh seluruh objek BouquetBunga, berfungsi untuk mencatat berapa total bouquet yang telah dibuat
+
+- tampilkan_info() (instance method) menampilkan detail satu bouquet
+- dari_dict() (class method) cara alternatif membuat objek BouquetBunga langsung dari data dictionary (berguna kalau data datang dari file/database)
+
+2. Pelanggan:
+atributnya ada:
+- id_pelanggan  kode identifikasi pelanggan (public)
+- nama_pelanggan  nama pelanggan (public)
+- __no_telepon  nomor kontak pelanggan, merupakan atribut private (ditandai dengan __ di awal)
+- total_pelanggan atribut tingkat kelas yang menghitung jumlah pelanggan yang terdaftar
+
+- tampilkan_info() (instance method) menampilkan detail pelanggan
+- validasi_Id_pelanggan() (static method) cuma fungsi bantuan untuk cek format ID (harus diawali huruf "P" dan panjang 4 karakter), tidak butuh data dari objek manapun
+
+ 3.Transaksi
+atributnya ada:
+- id_transaksi  kode unik untuk setiap transaksi (public)
+- tanggal  waktu transaksi dilaksanakan (public)
+- jumlah  kuantitas bouquet yang dibeli (public)
+- id_pelanggan, nama_pelanggan — diambil secara otomatis dari objek Pelanggan yang digunakan saat transaksi
+- id_bouquet, nama_bouquet — diambil secara otomatis dari objek BouquetBunga yang digunakan
+- total_harga  dikalkulasi otomatis dalam __init__ melalui rumus harga bouquet × jumlah
+- total_transaksi  atribut kelas yang mencatat jumlah total transaksi yang telah terjadi
+
+- tampilkan_transaksi() (instance method) menampilkan ringkasan transaksi lengkap
+
+Pengujian Program
+
+Semua pengujian ada di bagian bawah kode (main code). 
+
+1. Membuat & menampilkan data bouquet
+b1, b2  dibuat langsung lewat __init__
+b3 dibuat lewat dari_dict() (class method), dari data dictionary Lily Putih
+Ketiganya ditampilkan lewat tampilkan_info().
+
+2. Membuat & menampilkan data pelanggan
+p1 = Sari, 081234567891
+p2 = Budi, 081298765432
+
+3. Membuat transaksi
+t1 = Sari beli 3 Bouquet Mawar Merah total Rp 450.000
+t2 = Budi beli 2 Bouquet Tulip Pink total Rp 400.000
+
+4. Menguji setter dengan data tidak valid
+p1.no_telepon = "abc123" (bukan angka jadi ditolak)
+p1.no_telepon = "0812"  (kurang dari 12 digit jadi ditolak)
+
+Hasilnya bakalan muncul pesan "Nomor telepon tidak valid (harus angka, minimal 12 digit)." dan nomor lama tetap dipakai (tidak berubah).
+
+5. Menguji static method
+Pelanggan.validasi_Id_pelanggan("X123")
+Hasilnya jadi: False, karena ID tidak diawali huruf "P" dicetak "ID Pelanggan X123 tidak valid."
+
+6. Menguji setter dengan data valid
+p1.no_telepon = "081211112222"
+Hasilnya jadi: berhasil, nomor telepon Sari berubah jadi `081211112222`.
+
+7. Menampilkan atribut kelas
+BouquetBunga.total_bouquet   # 3
+Pelanggan.total_pelanggan    # 2
+Transaksi.total_transaksi    # 2
