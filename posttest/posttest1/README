@@ -34,9 +34,7 @@ atributnya ada:
 
 - tampilkan_transaksi() (instance method) menampilkan ringkasan transaksi lengkap
 
-Pengujian Program
-
-Semua pengujian ada di bagian bawah kode (main code). 
+Pengujian Program  (main code). 
 
 1. Membuat & menampilkan data bouquet
 b1, b2  dibuat langsung lewat __init__
