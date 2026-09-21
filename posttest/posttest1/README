@@ -22,7 +22,7 @@ atributnya ada:
 - tampilkan_info() (instance method) menampilkan detail pelanggan
 - validasi_Id_pelanggan() (static method) cuma fungsi bantuan untuk cek format ID (harus diawali huruf "P" dan panjang 4 karakter), tidak butuh data dari objek manapun
 
- 3.Transaksi
+3.Transaksi
 atributnya ada:
 - id_transaksi  kode unik untuk setiap transaksi (public)
 - tanggal  waktu transaksi dilaksanakan (public)
